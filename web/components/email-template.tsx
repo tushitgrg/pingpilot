@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Html, Head, Preview, Body, Container, Section, Heading, Text, Link, Button } from '@react-email/components';
-export const EmailTemplate=  ({name,url}) => (
-    <Html>
+
+export const EmailTemplate = ({ name, url }) => (
+  <Html>
     <Head />
     <Preview>Your Website May Be Down - Immediate Action Required</Preview>
     <Body style={{ backgroundColor: '#f4f4f4', fontFamily: 'Arial, sans-serif', margin: '0', padding: '20px' }}>
@@ -12,13 +13,13 @@ export const EmailTemplate=  ({name,url}) => (
             Dear {name},
           </Text>
           <Text style={{ color: '#555555', fontSize: '16px', lineHeight: '1.5', marginTop: '10px' }}>
-            We wanted to inform you that our monitoring service, <strong>Ping Pilot</strong>, has detected a potential downtime on your website <strong>{url}</strong>. This issue may affect your website's availability to visitors.
+            We wanted to inform you that our monitoring service, <strong>Ping Pilot</strong>, has detected a potential downtime on your website <strong>{url}</strong>. This issue may affect your website&apos;s availability to visitors.
           </Text>
           <Text style={{ color: '#555555', fontSize: '16px', lineHeight: '1.5', marginTop: '10px' }}>
             Please check your website immediately to ensure everything is functioning properly. You can use the link below to view more details and take necessary actions:
           </Text>
           <Button
-            href="http://localhost:3000"
+            href="https://pingpilot.vercel.app"
             style={{
               display: 'block',
               width: '100%',
@@ -38,7 +39,7 @@ export const EmailTemplate=  ({name,url}) => (
             If you need any assistance or have any questions, please feel free to reach out to our support team at <Link href="mailto:support@pingpilot.com" style={{ color: '#007bff' }}>support@pingpilot.com</Link>.
           </Text>
           <Text style={{ color: '#555555', fontSize: '16px', lineHeight: '1.5', marginTop: '20px' }}>
-            Thank you for using Ping Pilot to monitor your website's performance.
+            Thank you for using Ping Pilot to monitor your website&apos;s performance.
           </Text>
           <Text style={{ color: '#555555', fontSize: '16px', lineHeight: '1.5', marginTop: '10px' }}>
             Best regards,
