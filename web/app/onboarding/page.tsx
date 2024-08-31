@@ -52,7 +52,7 @@ export default  function  LoginForm() {
         const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
 
         let regex = new RegExp(expression)
-        if(url.match(regex)){
+        if(url.match(regex) &&url.includes("http")){
  
             let response = await axios.get(`https://pingpilot.vercel.app/api/add-url?url=${url}`)
             toast({title:"Connected!"})
