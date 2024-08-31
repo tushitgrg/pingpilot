@@ -5,8 +5,12 @@ import { NextResponse } from 'next/server';
 export const maxDuration = 59;
 export  async function GET(req, res) {
   
-   
-  const users = await axios.get("https://pingpilot.vercel.app/api/get-all");
+    let users = {data:[]}
+    try{
+       users = await axios.get("https://pingpilot.vercel.app/api/get-all");
+    }catch{
+      console.log("error")
+    }
   console.log("lighthouse record!")
    for(let i=0; i<users.data.length;i++){
     
