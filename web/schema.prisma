@@ -1,0 +1,45 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Lighthouse {
+  id                          String  @default(cuid()) @id
+  firstContentfulPaint        String?
+  speedIndex                  String?
+  timeToInteractive           String?
+  largestContentfulPaint      String?
+  totalBlockingTime           String?
+  performance                 String?
+  user                        User?   @relation(fields: [authorId], references: [id])
+  authorId                    String?
+  createdAt     DateTime     @default(now()) @map("created_at")
+}
+
+model Uptime {
+  id                          String  @default(cuid()) @id
+  user                        User?   @relation(fields: [authorId], references: [id])
+  authorId                    String?
+  status                      Boolean @default(true)
+  createdAt     DateTime     @default(now()) @map("created_at")
+}
+
+model User {
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?      @unique
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt      @map("updated_at")
+  url           String?      @unique
+  lighthouse    Lighthouse[]
+  uptime        Uptime[]
+  emailsent      Boolean @default(false)
+  @@map("users")
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { stringify } from 'querystring';
-
+export const maxDuration = 59;
 export  async function GET(req, res) {
   console.log("@@@@@@@@@@@@@")
 const urll = new URL(req.url);

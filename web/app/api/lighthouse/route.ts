@@ -1,12 +1,13 @@
+import prisma from '@/lib/prisma';
 import axios from 'axios';
 import { NextResponse } from 'next/server';
-
+export const maxDuration = 59;
 export async function GET(req, res) {
     const urll = new URL(req.url);
     let url = urll.searchParams.get("url");
    console.log("reached")
-
-  if (!url) {
+   let id = urll.searchParams.get("id");
+  if (!url && !id) {
     return new Response("Error",{status:500})
   }
 
@@ -19,6 +20,20 @@ let json = response.data;
   const lighthouse = json.lighthouseResult;
 console.log(json.loadingExperience)
   
+
+let  us =  await prisma.Lighthouse.create({
+  data: {
+    firstContentfulPaint : lighthouse.audits['first-contentful-paint']["displayValue"],
+    speedIndex : lighthouse.audits['speed-index']["displayValue"],
+    timeToInteractive : lighthouse.audits['interactive']["displayValue"],
+    largestContentfulPaint : lighthouse.audits['largest-contentful-paint-element']["displayValue"],
+    totalBlockingTime : lighthouse.audits['total-blocking-time']["displayValue"],
+    performance :  `${lighthouse.categories.performance.score}` ,
+      user: {
+        connect: { id: id }, 
+      },
+    },
+})
   return NextResponse.json({
    
 
