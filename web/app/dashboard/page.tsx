@@ -54,7 +54,18 @@ export default function Page() {
                 if (response.data) {
                     setCuser(response.data);
                 } else {
-                    router.push('/onboarding');
+                  try {
+                    const response = await axios.get('https://pingpilot.vercel.app/api/current-user');
+                    if (!response.data) {
+                      router.push('/sign-in');
+                    }else{
+                      router.push('/onboarding');
+                    }
+                } catch (error) {
+                    console.error('Error fetching current user:', error);
+                    router.push('/');
+                }
+                   
                 }
             } catch (error) {
                 console.error('Error fetching current user:', error);
