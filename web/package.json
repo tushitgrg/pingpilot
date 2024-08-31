@@ -5,8 +5,10 @@
 	"scripts": {
 		"dev": "next dev --turbo",
 		"build": "next build",
+		
 		"start": "next start",
-		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
+		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
+		 "postinstall": "prisma generate"
 	},
 	"dependencies": {
 		"@clerk/elements": "^0.14.4",
