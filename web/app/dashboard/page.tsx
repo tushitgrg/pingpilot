@@ -57,7 +57,7 @@ export default function Page() {
                   try {
                     const response = await axios.get('https://pingpilot.vercel.app/api/current-user');
                     if (!response.data) {
-                      router.push('/sign-in');
+                      router.push('/api/sign-in');
                     }else{
                       router.push('/onboarding');
                     }
