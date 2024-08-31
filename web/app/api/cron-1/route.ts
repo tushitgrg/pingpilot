@@ -31,7 +31,7 @@ export  async function GET(req, res) {
          });
        }
      } catch (error) {
-       if(users.data[i].emailsent) return NextResponse.json("Done");
+       if(users.data[i].emailsent) {
        console.error('website down:', error);
    
        axios.post('https://pingpilot.vercel.app/api/sendalert', {
@@ -47,7 +47,7 @@ export  async function GET(req, res) {
        status = false;
        const uptimerecord = await axios.get(`https://pingpilot.vercel.app/api/add-uptime?id=${users.data[i].id}&status=${status}`)
      }
-   
+    }
      
     }
 
