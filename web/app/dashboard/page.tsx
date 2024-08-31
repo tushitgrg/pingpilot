@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/chart"
 import { Separator } from "@/components/ui/separator"
 import { Performanceone } from "@/components/dashboard/Performanceone"
-import Performancetwo from "@/components/dashboard/Performancetwo"
+
 import axios from "axios"
 import { redirect, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"

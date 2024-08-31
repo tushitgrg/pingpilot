@@ -21,7 +21,7 @@ let json = response.data;
 console.log(json.loadingExperience)
   
 
-let  us =  await prisma.Lighthouse.create({
+let  us =  await prisma.lighthouse.create({
   data: {
     firstContentfulPaint : lighthouse.audits['first-contentful-paint']["displayValue"],
     speedIndex : lighthouse.audits['speed-index']["displayValue"],

@@ -13,7 +13,7 @@ const urll = new URL(req.url);
  let status = urll.searchParams.get("status");
 
  if(!id || !status)    return new Response("No id")
- let  us =  await prisma.Uptime.create({
+ let  us =  await prisma.uptime.create({
     data: {
         status: (status.toLowerCase()==="true"),
         user: {

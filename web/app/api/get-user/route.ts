@@ -7,7 +7,7 @@ export const maxDuration = 59;
 export  async function GET(req, res) {
     let cuser = await currentUser()
   if(!cuser) return new Response(null);
- let  users =  await prisma.User.findUnique({
+ let  users =  await prisma.user.findUnique({
 
     where: {
         email: cuser.emailAddresses[0].emailAddress, // Unique field to check

@@ -42,14 +42,14 @@ export const maxDuration = 59;
 export  async function GET(req, res) {
     let cuser = await currentUser()
   if(!cuser) return new Response(null);
-  let  users =  await prisma.User.findUnique({
+  let  users =  await prisma.user.findUnique({
 
     where: {
         email: cuser.emailAddresses[0].emailAddress, // Unique field to check
       },
  });
 
- let  lighthouserep =  await prisma.Lighthouse.findFirst({
+ let  lighthouserep =  await prisma.lighthouse.findFirst({
 
     where: {
         authorId: users.id, 
@@ -58,7 +58,7 @@ export  async function GET(req, res) {
         createdAt: 'desc',
     }
  });
- let  lighthouseall =  await prisma.Lighthouse.findMany({
+ let  lighthouseall =  await prisma.lighthouse.findMany({
 
     where: {
         authorId: users.id, 
@@ -70,11 +70,11 @@ export  async function GET(req, res) {
  let totalperformance = 0;
  let allperformances = []
  for(let i=0;i<lighthouseall.length;i++){
-totalperformance = totalperformance + lighthouseall[i].performance*100;
+totalperformance = totalperformance + parseFloat( lighthouseall[i].performance) *100;
 const datetime = new Date(lighthouseall[i].createdAt)
 allperformances.push({
     date: datetime.toISOString().split('T')[0],
-    performance:lighthouseall[i].performance*100
+    performance:parseFloat( lighthouseall[i].performance)*100
 })
  }
 const lighthousevalues = {
@@ -89,7 +89,7 @@ const today = new Date();
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(today.getDate() - 7);
 
-const alluptimerecs =    await prisma.Uptime.findMany({
+const alluptimerecs =    await prisma.uptime.findMany({
 
     where: {
         createdAt: {

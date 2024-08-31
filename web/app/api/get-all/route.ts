@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 export const maxDuration = 59;
 export  async function GET(req, res) {
   
- let  users =  await prisma.User.findMany();
+ let  users =  await prisma.user.findMany();
 
 
 return NextResponse.json(users);

@@ -26,7 +26,7 @@ export  async function GET(req, res) {
          });
        }
      } catch (error) {
-       if(users.data[i].emailsent) return
+       if(users.data[i].emailsent) return NextResponse.json("Done");
        console.error('website down:', error);
    
        axios.post('https://pingpilot.vercel.app/api/sendalert', {
