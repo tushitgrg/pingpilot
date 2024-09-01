@@ -80,7 +80,7 @@ export default  function  LoginForm() {
         
       </CardContent>
       <CardFooter>
-        <Button className="w-full" onClick={handlesubmit} type="submit" isLoading={loading} >Connect</Button>
+        <Button className="w-full" onClick={handlesubmit} type="submit" isLoading={loading} >{loading?"This might take a while":"Connect"}</Button>
        
       </CardFooter>
     </Card>
