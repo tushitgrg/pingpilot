@@ -38,6 +38,7 @@ import { Performanceone } from "@/components/dashboard/Performanceone"
 import axios from "axios"
 import { redirect, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { Button } from "@nextui-org/button"
 
 
 
@@ -97,7 +98,8 @@ getLighthouse()
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8 mb-5">
       <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
-    <h1>{lighthouse.userurl}</h1>
+   <Button>{lighthouse.userurl}</Button>
+
 
         <Card
           className="lg:max-w-md" x-chunk="charts-01-chunk-0"
