@@ -141,7 +141,8 @@ return NextResponse.json({"lighthouse":lighthouserep,
     'lighthousevalues':lighthousevalues,
     'avgperformance' : totalperformance/lighthouseall.length,
     'allperformances' : allperformances,
-    'uptimedata':uptimedata.reverse()
+    'uptimedata':uptimedata.reverse(),
+    'userurl':users.url
 });
 
   
