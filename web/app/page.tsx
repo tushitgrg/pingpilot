@@ -48,7 +48,7 @@ export default function Home() {
 <GlobeDemo/>
 <CanvasRevealEffectDemo/>
 <HeroScrollDemo/>
-<InfiniteMovingCardsDemo/>
+
 
     </section>
   );
